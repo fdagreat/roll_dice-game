@@ -36,7 +36,7 @@ function resetgame(){
     player1Dice.style.margin =" 0 auto";
 }
 rollBtn.addEventListener('click', function(){
-    let randNumber = Math.floor(Math.random()*6)+1;
+    let randNumber =2*(Math.floor(Math.random()*6)+1);
    
     if(plater1Turn){
     player1Score +=randNumber;
