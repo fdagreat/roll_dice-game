@@ -15,6 +15,26 @@ const message = document.getElementById('message');
 const rollBtn = document.getElementById('rollBtn');
 const resetBtn = document.getElementById('resetBtn');
 
+function toggleButtons(){
+    rollBtn.style.display="none";
+    resetBtn.style.display="block";  
+}
+
+function resetgame(){
+    message.textContent = "Player 1 Turn"
+    player1Scoreboard.textContent = 0
+    player2Scoreboard.textContent = 0
+    player1Dice.textContent = '-'
+    player2Dice.textContent = '-'
+    player1Score = 0
+    player2Score = 0
+    player1Turn = true
+    resetBtn.style.display = "none"
+    rollBtn.style.display = "block"
+    player2Dice.classList.remove("active")
+    player1Dice.classList.add("active")
+    player1Dice.style.margin =" 0 auto";
+}
 rollBtn.addEventListener('click', function(){
     let randNumber = Math.floor(Math.random()*6)+1;
    
@@ -34,5 +54,18 @@ rollBtn.addEventListener('click', function(){
         message.textContent = "Player 1 Turn";
     }
 
+    if(player1Score >=20){
+        message.textContent = "Player 1 has won! 🥇";
+        toggleButtons();
+              
+    }else if(player2Score >=20){
+        message.textContent = "Player 2 has won! 🥇";
+        toggleButtons();
+    }
+
     plater1Turn = !plater1Turn;
+})
+
+resetBtn.addEventListener('click',function(){
+    resetgame();
 })
